@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import About from "./About";
 import ArticleList from "./ArticleList";
+import useQuery from "../hooks/useQuery";
 
 function HomePage() {
+  const { data: posts, isLoaded } = useQuery("http://localhost:4000/posts");
   // fetch data for posts
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [posts, setPosts] = useState([]);
+ 
+ 
 
   useEffect(() => {
     setIsLoaded(false);
@@ -22,6 +24,7 @@ function HomePage() {
     document.title = "Underreacted | Home";
   }, []);
 
+  
   return (
     <>
       <About />
